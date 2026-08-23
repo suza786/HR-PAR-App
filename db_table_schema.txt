@@ -1,0 +1,156 @@
+Models:
+    EmpType:
+        id: increments
+        emp_type: char
+        type_description: text
+    Donor:
+        id: increments
+        name: string
+        parent_dept_id: char
+    Project:
+        id: increments
+        donor_id: integer
+        project_code: char
+        name: string
+        short_name: char
+        start_date: date
+        end_date: date
+        currency: choice
+        total_budget: integer
+        total_revised_budget: integer
+    ProjectYearlyBudget:
+        id: increments
+        project_id: integer
+        year_start_date: date
+        year_end_date: date
+        allocated_budget: integer
+        expended_budget: integer
+        curr_year: year
+    Department:
+        id: increments
+        name: string
+        parent_dept_id: char
+    Location:
+        id: increments
+        user_id: integer
+        name: string
+        relation: char
+        gender: char
+        dob: integer
+    Role:
+        id: increments
+        role_name: char unique
+        slug: char
+        note: text
+        deletable: boolean
+    User:
+        id: increments
+        emp_id: char unique
+        emp_type_id: integer
+        supervisor_id: integer
+        name: string
+        gender: enum
+        email: char unique
+        birth_date: date
+        join_date: date
+        location_id: integer
+        department_id: integer
+        position: char
+        mobile: char
+        user_status: boolean
+        separation_date: date
+        photo: char
+    RoleUser:
+        id: increments
+        user_id: integer
+        role_id: integer
+    PersonalDetail:
+        id: increments
+        user_id: integer
+        father_name: string
+        mother_name: string
+        spouse_name: string
+        spouse_mobile: string
+        personal_email: string
+        present_address: text
+        permanent_address: text
+        national_id: string
+        tin_id: string
+        passport_num: integer
+        blood_group: enum
+        religion: enum
+    Dependent:
+        id: increments
+        user_id: integer
+        name: string
+        relation: char
+        gender: char
+        dob: integer
+    SalaryEntryUpdate:
+        id: increments
+        user_id: integer
+        basic: double
+        house_rent: double
+        transport: double
+        medical: double
+        pf_organization: double
+        gratuity: double
+        bonus: double
+        insurance: double
+        type_of_entry: integer
+        efective_date: date
+    BankAccount:
+        id: increments
+        user_id: integer
+        account_title: string
+        account_num: integer
+        bank_name: string
+        branch: char
+        swift_code: char
+        ac_status: boolean
+    ServiceHistory:
+        id: increments
+        user_id: integer
+        transaction_type: enum
+        designation: char
+        order_num: char
+        order_date: integer
+        date_of_increment: date
+        note: text
+    Nominee:
+        id: increments
+        user_id: integer
+        name: string
+        gender: enum
+        relation: char
+        dob: date
+        nid_or_bid: string
+        photo: integer
+    EducationTraining:
+        id: increments
+        user_id: integer
+        title: integer
+        board_university_institute: string
+        session_duration: char
+        result_marks: integer
+        year: year
+    LoanDetail:
+        id: increments
+        user_id: integer
+        loan_amount: double
+        prv_loan_amount: double
+        paid_amount: double
+        period_month: integer
+        start_date: date
+        end_date: date
+        rate: decimal
+        installment: decimal
+    EmploymentHistory:
+        id: increments
+        user_id: integer
+        organization: string
+        address: text
+        designation: string
+        start_date: date
+        end_date: date
+        note: text
