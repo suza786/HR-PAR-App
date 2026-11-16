@@ -15,6 +15,7 @@ class GenericEmail extends Mailable
     public function __construct(
         public string $emailSubject,
         public string $emailBody,
+        public array $emailAttachments = [],
     ) {}
 
     public function envelope(): Envelope
@@ -29,6 +30,6 @@ class GenericEmail extends Mailable
 
     public function attachments(): array
     {
-        return [];
+        return $this->emailAttachments;
     }
 }

@@ -22,6 +22,7 @@ class EmailSender
         string|array $to,
         string|array|null $cc = null,
         ?string $body = null,
+        array $attachments = [],
     ): bool {
         $setting = $this->setting();
 
@@ -40,7 +41,7 @@ class EmailSender
                 $pendingMail->cc($ccAddresses);
             }
 
-            $pendingMail->send(new GenericEmail($subject, $body ?: $subject));
+            $pendingMail->send(new GenericEmail($subject, $body ?: $subject, $attachments));
 
             return true;
         } catch (Throwable $exception) {
